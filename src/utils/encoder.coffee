@@ -1,14 +1,21 @@
-{spawn} = require "child_process"
+{spawn}     = require "child_process"
+{platform}  = require "os"
+{chmodSync} = require "fs"
+
 
 class Encoder
   constructor: ({@source,@bitrate,@target,@log}) ->
     @target  ||= @source.replace /\.wav$/, ".mp3"
     @bitrate ||= 128
 
-    # binary may not be executable due to zip compression..
-    require("fs").chmodSync @pathToBin, 0755
+    switch platform()
+      when "darwin"
+        @pathToBin = "vendor/bin/osx/shineenc"
+      when "win32"
+        @pathToBin = "vendor/bin/win32/shineenc.exe"
 
-  pathToBin: "vendor/bin/osx/shineenc"
+    # binary may not be executable due to zip compression..
+    chmodSync @pathToBin, 0755
 
   process: ->
     @log "Starting encoding process.."
