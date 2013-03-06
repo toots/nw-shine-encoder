@@ -8,7 +8,7 @@ class EncodeFormView extends Backbone.View
   render: ->
     @$el.html "Please wait while loading.."
 
-    $.get "https://raw.github.com/toots/nw-sample-apps/master/templates/form.html"
+    $.ajax "https://raw.github.com/toots/nw-shine-encoder/master/templates/form.html"
       success: (data) =>
         @$el.html data
 
