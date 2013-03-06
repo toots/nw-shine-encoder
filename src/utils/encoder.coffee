@@ -5,6 +5,9 @@ class Encoder
     @target  ||= @source.replace /\.wav$/, ".mp3"
     @bitrate ||= 128
 
+    # binary may not be executable due to zip compression..
+    require("fs").chmodSync @pathToBin, 0755
+
   pathToBin: "vendor/bin/osx/shineenc"
 
   process: ->
