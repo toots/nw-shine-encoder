@@ -6,11 +6,14 @@ class EncodeFormView extends Backbone.View
   initialize: ({@logsElem}) ->
 
   render: ->
-    @$el.html """
-      File: <input class="file" type="file"><br>
-      Bitrate: <input class="bitrate" type="text" value="128"><br>
-      <input type="submit" value="Encode!">
-    """
+    @$el.html "Please wait while loading.."
+
+    $.get "https://raw.github.com/toots/nw-sample-apps/master/templates/form.html"
+      success: (data) =>
+        @$el.html data
+
+      error: =>
+        @$el.html "Sorry, the unicorn is hungover.."
 
     this
 
