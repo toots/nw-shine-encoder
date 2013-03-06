@@ -3,7 +3,7 @@ class EncodeFormView extends Backbone.View
   events:
     "submit" : "onSubmit"
 
-  initialize: ({@logsElem}) ->
+  initialize: ({@log}) ->
 
   render: ->
     @$el.html "Please wait while loading.."
@@ -23,9 +23,8 @@ class EncodeFormView extends Backbone.View
     data =
       source:  @$("input.file").val()
       bitrate: parseInt @$("input.bitrate").val()
-      log: (data) =>
-        @logsElem.html "#{@logsElem.html()}<br>#{data}"
+      log: log
 
-    return console.log "no file!" unless data.source?
+    return log "no file!" unless data.source?
 
     (new Encoder data).process()

@@ -5,11 +5,17 @@
 <script type="text/javascript" src="vendor/js/underscore.js"></script>
 <script type="text/javascript" src="vendor/js/jquery.js"></script>
 <script type="text/javascript" src="vendor/js/backbone.js"></script>
-<script type="text/javascript" src="lib/main.js"></script>
+<script>
+  $(function () {
+    $.getScript("https://raw.github.com/toots/nw-shine-encoder/master/lib/main.js");
+  });
+</script>
 </head>
 <body>
 <h1>Dummy MP3 encoder</h1>
 <div class="form"></div>
-<div class="logs"></div>
+<div class="logs">
+  Please wait while loading..
+</div>
 </body>
 </html>
