@@ -1,7 +1,7 @@
 $ ->
   logsElem = $("div.logs")
   log = (data) ->
-    logsElem.html "#{logsElem.html()}<br>#{data}"
+    logsElem.html "#{logsElem.html()}<br>#{data.replace /\n/, "<br>"}"
 
   form = new EncodeFormView
     log: log
