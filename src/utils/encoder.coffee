@@ -22,4 +22,4 @@ class Encoder
       @log "ERROR: #{data}"
 
     @child.on "exit", (code) =>
-      @log "Encoding process existed with code: #{code}"
+      @log "Encoding process exited with code: #{code}"
