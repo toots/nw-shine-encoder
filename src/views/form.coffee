@@ -1,3 +1,5 @@
+{existsSync} = require "fs"
+
 class EncodeFormView extends Backbone.View
   tagName: "form"
   events:
@@ -25,6 +27,6 @@ class EncodeFormView extends Backbone.View
       bitrate: parseInt @$("input.bitrate").val()
       log: @log
 
-    return @log "no file!" unless data.source?
+    return @log("Source file does not exist!") unless existsSync(data.source)
 
     (new Encoder data).process()
