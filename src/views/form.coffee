@@ -23,8 +23,8 @@ class EncodeFormView extends Backbone.View
     data =
       source:  @$("input.file").val()
       bitrate: parseInt @$("input.bitrate").val()
-      log: log
+      log: @log
 
-    return log "no file!" unless data.source?
+    return @log "no file!" unless data.source?
 
     (new Encoder data).process()
